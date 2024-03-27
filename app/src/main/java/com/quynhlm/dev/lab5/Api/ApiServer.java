@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -21,4 +22,6 @@ public interface ApiServer {
     Call<Void> deleteDistribute(@Path("id") String distributeId);
     @GET("/search")
     Call<List<Distribute>> search(@Query("key") String keyword);
+    @PUT("/{id}")
+    Call<Distribute> updateData(@Path("id") String id, @Body Distribute distribute);
 }
