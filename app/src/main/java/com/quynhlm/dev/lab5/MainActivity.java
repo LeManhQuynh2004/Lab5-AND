@@ -42,26 +42,26 @@ public class MainActivity extends AppCompatActivity {
     private DistributeAdapter distributeAdapter;
     ApiServer apiServer;
 
-    private void handleCallData() {
-        Call<List<Distribute>> call = apiServer.getAllData();
-        call.enqueue(new Callback<List<Distribute>>() {
-            @Override
-            public void onResponse(Call<List<Distribute>> call, Response<List<Distribute>> response) {
-                if (response.isSuccessful()) {
-                    listDistribute = response.body();
-                    list.addAll(listDistribute);
-                } else {
-                    Toast.makeText(MainActivity.this, "Call thất bại", Toast.LENGTH_SHORT).show();
-                    Log.e("TAG", "onResponse: " + response.code() + "");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Distribute>> call, Throwable t) {
-                Log.e("TAG", "onResponse: " + t.getMessage());
-            }
-        });
-    }
+//    private void handleCallData() {
+//        Call<List<Distribute>> call = apiServer.getAllData();
+//        call.enqueue(new Callback<List<Distribute>>() {
+//            @Override
+//            public void onResponse(Call<List<Distribute>> call, Response<List<Distribute>> response) {
+//                if (response.isSuccessful()) {
+//                    listDistribute = response.body();
+//                    list.addAll(listDistribute);
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Call thất bại", Toast.LENGTH_SHORT).show();
+//                    Log.e("TAG", "onResponse: " + response.code() + "");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Distribute>> call, Throwable t) {
+//                Log.e("TAG", "onResponse: " + t.getMessage());
+//            }
+//        });
+//    }
 
     private void initView() {
         recyclerView = findViewById(R.id.RecyclerView_Distribute);
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        handleCallData();
+//        handleCallData();
         distributeAdapter = new DistributeAdapter(MainActivity.this, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         recyclerView.setAdapter(distributeAdapter);
@@ -151,9 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
     private void searchServer() {
         editTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
